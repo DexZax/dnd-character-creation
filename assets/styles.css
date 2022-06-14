@@ -149,17 +149,25 @@ header {
     margin-left: 10vw;
 }
 
-.race-boxes, .class-box {
+.race-boxes, .class-boxes {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.race-boxes div, .class-box div {
+.race-boxes div, .class-boxes div {
     border: 1px solid black;
     width: 270px;
     height: 500px;
     margin: 30px;
+}
+
+.race-box h2, .class-box h2 {
+    text-align: center;
+}
+
+.race-box p, .class-box p {
+    margin-left: 5px;
 }
 
 
