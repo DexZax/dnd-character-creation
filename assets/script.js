@@ -1,7 +1,26 @@
+// APIs
 var apiURL = `https://www.dnd5eapi.co/api/`;
 
-var races = []
-var selectedRace = "";
+// variables
+var racesList = [];
+var raceInfo = [];
+
+// info of current character being made
+var char = {
+    race: "",
+    class: "",
+    name: ""
+}
+
+
+// FOR TESTING API LINKS
+var testLink = function(apiUrl) {
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    });
+}
 
 // Pull list from DnD API
 // serverList: the list we want to pull from the DnD api
@@ -10,7 +29,7 @@ var getList = function(serverList, setLocalList) {
     fetch(`${apiURL}${serverList}`)
         .then(response => response.json())
         .then(data => {
-            setLocalList(data.results);
+            setLocalList(data);
         });
 }
 
@@ -32,27 +51,40 @@ var printList = function(htmlEl, list) {
 
 // Prints races
 var printRaces = function(list) {
-    races = list;
-    printList(".race-boxes", races);
+    racesList = list.results;
+    printList(".race-boxes", racesList);
+}
+
+// Store race information
+var storeRaceInfo = function(list) {
+    raceInfo = list;
 }
 
 // Handler for when selecting a race
 var selectingRaceHandler = function(event) {
-    // var listItem = event.target;
-    console.log(event.target);
+    var target = event.target;
 
-    // // ensures handler only runs when a list item is selected
+    // // ensures handler only runs when a race-box is selected
+    if (event.target.matches(`.race-box`)) {
+        // sets selected race to what was selected
+        char.race = $(target).find('h2').text();
+        var race = char.race.toLocaleLowerCase();
 
-    //     // sets selected race to what is selected
-    //     selectedRace = $(listItem).text();
-    //     // proceed with class selection
-    //     console.log(`Race selected: ${selectedRace}. Proceed with class selection.`);
-    
+        getList(`races/${race}`, storeRaceInfo);
+        console.log("clicked " + race);
+
+        // navigate to class
+        location.replace('classes.html')
+    }    
 }
 
 getList("races", printRaces);
 
 // event listeners
-$("div").on('click', selectingRaceHandler);
+$(".race-boxes").click(selectingRaceHandler);
+
+// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
+
+
 
 
