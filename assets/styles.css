@@ -149,32 +149,17 @@ header {
     margin-left: 10vw;
 }
 
-.race-box-top {
+.race-boxes, .class-box {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 
-.race-box-top div {
+.race-boxes div, .class-box div {
     border: 1px solid black;
     width: 270px;
     height: 500px;
     margin: 30px;
 }
-
-/* .race-box-bottom {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 2em 8em 0 8em;
-}
-
-.race-box-bottom div {
-    border: 1px solid black;
-    width: 13em;
-    height: 18em;
-    margin: 0 1em 0 1em;
-} */
-
 
 
