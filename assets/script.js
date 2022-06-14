@@ -4,7 +4,7 @@ var races = []
 
 // Pull list from DnD API
 // serverList: the list we want to pull from the DnD api
-// setLocalList: calls a function that stores the server list as a local variable
+// setLocalList: calls a function that stores the server list as a local variable and also prints it to the html
 var getList = function(serverList, setLocalList) {
     fetch(`${apiURL}${serverList}`)
         .then(response => response.json())
