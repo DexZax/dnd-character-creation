@@ -72,6 +72,11 @@ header {
     margin-left: 1em;
 }
 
+.nav {
+    display: flex;
+    align-items: center;
+}
+
 .nav-item {
     font-size: var(--fs-body);
     margin-right: 1em;
