@@ -1,6 +1,7 @@
 var apiURL = `https://www.dnd5eapi.co/api/`;
 
 var races = []
+var selectedRace = "";
 
 // Pull list from DnD API
 // serverList: the list we want to pull from the DnD api
@@ -30,6 +31,21 @@ var printRaces = function(list) {
     printList(".races", races);
 }
 
+// Handler for when selecting a race
+var selectingRaceHandler = function(event) {
+    var listItem = event.target;
+    // ensures handler only runs when a list item is selected
+    if (listItem.matches("li")) {
+        // sets selected race to what is selected
+        selectedRace = $(listItem).text();
+        // proceed with class selection
+        console.log(`Race selected: ${selectedRace}. Proceed with class selection.`);
+    }
+}
+
 getList("races", printRaces);
+
+// event listeners
+$(".races").on('click', selectingRaceHandler);
 
 
