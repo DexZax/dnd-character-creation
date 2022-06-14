@@ -21,7 +21,6 @@ var printList = function(htmlEl, list) {
         var listEl = $(`<li>`)
             .text(`${list[i].name}`);        
         $(`${htmlEl}`).append(listEl);
-        console.log("test");
     }
 }
 
