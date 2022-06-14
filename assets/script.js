@@ -38,19 +38,21 @@ var printRaces = function(list) {
 
 // Handler for when selecting a race
 var selectingRaceHandler = function(event) {
-    var listItem = event.target;
-    // ensures handler only runs when a list item is selected
-    if (listItem.matches("li")) {
-        // sets selected race to what is selected
-        selectedRace = $(listItem).text();
-        // proceed with class selection
-        console.log(`Race selected: ${selectedRace}. Proceed with class selection.`);
-    }
+    // var listItem = event.target;
+    console.log(event.target);
+
+    // // ensures handler only runs when a list item is selected
+
+    //     // sets selected race to what is selected
+    //     selectedRace = $(listItem).text();
+    //     // proceed with class selection
+    //     console.log(`Race selected: ${selectedRace}. Proceed with class selection.`);
+    
 }
 
 getList("races", printRaces);
 
 // event listeners
-$(".races").on('click', selectingRaceHandler);
+$("div").on('click', selectingRaceHandler);
 
 
