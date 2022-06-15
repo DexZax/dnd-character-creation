@@ -81,7 +81,7 @@ var selectingRaceHandler = function(event) {
 getList("races", printRaces);
 
 // event listeners
-//$(".race-boxes").click(selectingRaceHandler);
+// $(".race-boxes").click(selectingRaceHandler);
 
 // testLink(`https://www.dnd5eapi.co/api/ability-scores`);
 
