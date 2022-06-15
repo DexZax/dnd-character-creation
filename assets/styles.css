@@ -140,9 +140,9 @@ header {
     }
 }
 
-/* races page style */
+/* races page style */ 
 
-.box-container {
+ .box-container {
     display: flex;
     width: 80vw;
     justify-content: center;

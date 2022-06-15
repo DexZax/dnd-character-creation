@@ -81,10 +81,20 @@ var selectingRaceHandler = function(event) {
 getList("races", printRaces);
 
 // event listeners
-$(".race-boxes").click(selectingRaceHandler);
+//$(".race-boxes").click(selectingRaceHandler);
 
 // testLink(`https://www.dnd5eapi.co/api/ability-scores`);
 
+// saved character modal
 
+const characterButton = document.querySelector('#saved-characters');
+const modalBg = document.querySelector('.modal-background');
+const modal = document.querySelector('.modal');
 
+characterButton.addEventListener('click', () => {
+    modal.classList.add('is-active');
+});
 
+modalBg.addEventListener('click', () => {
+    modal.classList.remove('is-active');
+});
