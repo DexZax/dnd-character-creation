@@ -61,6 +61,10 @@ h3 {
 
 /* header section */
 
+.logo {
+    max-height: 100px;
+}
+
 header {
     background: var(--clr-light);
     border-bottom: 4px solid red;
@@ -116,30 +120,6 @@ header {
     cursor: pointer;
 }
 
-@media (max-width: 700px) {
-    :root {
-        /* font-weight */
-        --fw-reg: 400;
-        --fw-bold: 900;
-        /* font-size */
-        --fs-h1: 2rem;
-        --fs-h2: 2.25rem;
-        --fs-h3: 1rem;
-        --fs-body: 1rem;
-    }
-    
-    .character-start {
-        width: 80px;
-        height: 40px;
-    }
-    
-    .header-logo {
-        width: 30vw;
-        height: 100%;
-        margin-left: 1em;
-    }
-}
-
 /* races page style */ 
 
  .box-container {
@@ -170,4 +150,38 @@ header {
     margin-left: 5px;
 }
 
+/* race & card properties */
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.card-content {
+    height: 100%;
+}
 
+
+@media (max-width: 700px) {
+    :root {
+        /* font-weight */
+        --fw-reg: 400;
+        --fw-bold: 900;
+        /* font-size */
+        --fs-h1: 2rem;
+        --fs-h2: 2.25rem;
+        --fs-h3: 1rem;
+        --fs-body: 1rem;
+    }
+    
+    .character-start {
+        width: 80px;
+        height: 40px;
+    }
+    
+    .header-logo {
+        width: 30vw;
+        height: 100%;
+        margin-left: 1em;
+    }
+}

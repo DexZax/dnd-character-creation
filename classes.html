@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script defer src="assets\script.js"></script>
-    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="./assets/script.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>D&D Classes</title>
 </head>
 
@@ -18,7 +17,7 @@
     <nav class="navbar has-shadow is-white">
         <!-- logo -->
         <div class="navbar-brand">
-            <img src="./assets/images/Dungeons-and-Dragons-Logo-2014.png" alt="dungeons and dragons logo" style="max-height: 80px" class="px-2 py-2">
+            <img src="./assets/images/Dungeons-and-Dragons-Logo-2014.png" alt="dungeons and dragons logo" class="logo"">
          </div>
         <!-- home button -->
         <div class="navbar-menu" id="nav-links">
@@ -28,104 +27,305 @@
         </div>
     </nav>
 
-    <div class="box-container">
-    <section class="class-boxes">
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>   
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
-        <div class="class-box">
-                <h2>title</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt molestias laboriosam debitis a
-                    quibusdam aut eveniet vel similique distinctio quisquam magni, fugit earum. Dolore exercitationem
-                    incidunt beatae dicta voluptatibus nulla.
-                </p>
-        </div>
+    <!-- card section -->
+    <section class="section">
+
+        <!-- card container -->
+        <div class="container">
+
+            <!-- page title -->
+            <h3 class="title has-text-centered is-size-1">Classes</h3>
+
+            <!-- all columns here -->
+            <div class="columns mt-5 is-8 is-variable is-justify-content-space-around is-flex-wrap-wrap">
+
+                <!-- barbarian card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Barbarian</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3barbarianintro.png" alt="Barbarian">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- bard card -->
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Bard</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3bardintro.png" alt="Bard" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- cleric card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Cleric</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3clericintro.png" alt="Cleric" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- druid card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Druid</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3druidintro.png" alt="Druid" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- monk card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Monk</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3monkintro.png" alt="Monk">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- paladin card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Paladin</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3paladinintro.png" alt="Paladin" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- ranger card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Ranger</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3rangerintro.png" alt="Ranger" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- rogue card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Rogue</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3rogueintro.png" alt="Rogue" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- sorcerer card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Sorcerer</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3sorcererintro.png" alt="Sorcerer">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- warlock card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Warlock</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3warlockintro.png" alt="Warlock" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- fighter card -->
+            
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Fighter</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images//d&d classes/c3fighterintro.png" alt="Fighter" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- wizard card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Wizard</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d classes/c3wizardintro.png" alt="Wizard" class="class-img">
+                        </div>
+                        <!-- slect/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="name.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+            </div> <!--columns end-->
+        </div> <!--container end-->
     </section>
-    </div>
 </body>

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script defer src="assets\script.js"></script>
-    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script defer src="./assets/script.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>D&D Races</title>
 </head>
 
@@ -18,7 +17,7 @@
     <nav class="navbar has-shadow is-white">
         <!-- logo -->
         <div class="navbar-brand">
-            <img src="./assets/images/Dungeons-and-Dragons-Logo-2014.png" alt="dungeons and dragons logo" style="max-height: 80px" class="px-2 py-2">
+            <img src="./assets/images/Dungeons-and-Dragons-Logo-2014.png" alt="dungeons and dragons logo" class="logo">
          </div>
         <!-- home button -->
         <div class="navbar-menu" id="nav-links">
@@ -27,15 +26,236 @@
             </div>
         </div>
     </nav>
-    
-    <div class="container">
-        <div="columns">
-  
-        <section class="race-boxes">
-        <!-- race boxes go  -->
-        </section>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="./assets/script.js"></script>
-    </div>
+
+    <!-- entire card section -->
+    <section class="section">
+
+        <!-- holds all of the cards -->
+        <div class="container">
+
+            <!-- page title -->
+            <h3 class="title has-text-centered is-size-1">Races</h3>
+            
+            <!-- all columns here -->
+            <div class="columns mt-5 is-8 is-variable is-justify-content-space-around is-flex-wrap-wrap">
+                
+                <!-- tiefling card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Tiefling</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/tiefling.png" alt="Tiefling" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- dwarf card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Dwarf</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/dwarf.png" alt="dwarf" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- elf card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Elf</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/elf.png" alt="elf" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- gnome card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Gnome</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/gnome.png" alt="gnome" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- half-elf card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Helf-elf</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/half-elf.png" alt="Half-elf">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- half-orc card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Half-orc</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/half-orc.png" alt="Half-orc" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- halfling card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <!-- title -->
+                        <div class="card-content">
+                            <p class="title is-size-5 has-text-centered">Halfling</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/halfling.png" alt="Halfling" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- human card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <!-- title -->
+                        <div class="card-content">
+                            <p class="title is-size-5 has-text-centered">Human</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/human.png" alt="Human" class="class-img">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- dragonborn card -->
+
+                <div class="column is-4-tablet is-3-desktop">
+                    <div class="card">
+                        <div class="card-content">
+                            <!-- title -->
+                            <p class="title is-size-5 has-text-centered">Dragonborn</p>
+                        </div>
+                        <!-- image -->
+                        <div class="card-image has-text-centered px-6">
+                            <img src="./assets/images/d&d races/dragonborn.png" alt="dragonborn">
+                        </div>
+                        <!-- select/info buttons -->
+                        <footer class="card-footer">
+                            <p class="card-footer-item">
+                                <a href="classes.html" class="has-text-grey">Select</a>
+                            </p>
+                            <p class="card-footer-item">
+                                <a href="" class="has-text-grey">Info</a>
+                            </p>
+                        </footer>
+                    </div>
+                </div>
+
+            </div> <!-- columnds end-->
+        </div> <!-- container end-->
+    </section>
 </body>
