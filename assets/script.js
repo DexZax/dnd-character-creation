@@ -67,14 +67,13 @@ var selectingRaceHandler = function(event) {
     // // ensures handler only runs when a race-box is selected
     if (event.target.matches(`.race-box`)) {
         // sets selected race to what was selected
-        char.race = $(target).find('h2').text();
-        var race = char.race.toLocaleLowerCase();
+        char.race = $(target).find('h2').text().toLocaleLowerCase();
 
-        getList(`races/${race}`, storeRaceInfo);
-        console.log("clicked " + race);
+        getList(`races/${char.race}`, storeRaceInfo);
+        console.log("clicked " + char.race);
 
         // navigate to class
-        location.replace('classes.html')
+        location.replace(`classes.html?race=${char.race}`)
     }    
 }
 
