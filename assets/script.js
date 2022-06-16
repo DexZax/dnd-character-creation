@@ -105,7 +105,7 @@ var getClassList = function(serverList, setLocalList) {
         });
 }
 
-var printList = function(htmlEl, list) {
+var printClassList = function(htmlEl, list) {
     for (var i = 0; i < list.length; i++) {
         var divEl = $(`<div>`)
             .addClass(`class-box card`);
@@ -136,7 +136,7 @@ var selectingClassHandler = function(event) {
 
 var printClasses = function(list) {
     classList = list.results;
-    printList(".class-boxes", classList);
+    printClassList(".class-boxes", classList);
 }
 
 getClassList("classes", printClasses)
