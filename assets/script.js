@@ -38,7 +38,7 @@ var getList = function(serverList, setLocalList) {
 // Print list to HTML
 // htmlEl: the html element we want to append the <li> to
 // list: the array we want to print
-var printList = function(htmlEl, list) {
+var printList = function(htmlEl, list, imgFolder) {
     for (var i = 0; i < list.length; i++) {
         var divEl = $(`<div>`)
             .addClass(`race-box`);
@@ -46,7 +46,18 @@ var printList = function(htmlEl, list) {
         var titleEl = $(`<h2>`)
             .text(`${list[i].name}`);
 
-        $(divEl).append(titleEl);
+        var imgEl = $(`<img>`)
+            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
+            
+        var button1El = $(`<button>`)
+            .addClass(`race-select button is-medium`)
+            .text(`select`);
+        
+        var button2El = $(`<button>`)
+            .addClass(`raceInfo button is-medium`)
+            .text(`info`);
+
+        $(divEl).append(titleEl, imgEl, button1El, button2El);
         $(`${htmlEl}`).append(divEl);
     }
 }
@@ -54,7 +65,7 @@ var printList = function(htmlEl, list) {
 // Prints races
 var printRaces = function(list) {
     racesList = list.results;
-    printList(".race-boxes", racesList);
+    printList(".race-boxes", racesList, "d&d races");
 }
 
 // Store race information
@@ -67,7 +78,7 @@ var selectingRaceHandler = function(event) {
     var target = event.target;
 
     // // ensures handler only runs when a race-box is selected
-    if (event.target.matches(`.race-box`)) {
+    if (event.target.matches(`.race-select`)) {
         // sets selected race to what was selected
         char.race = $(target).find('h2').text().toLocaleLowerCase();
 
@@ -85,20 +96,4 @@ getList("races", printRaces);
 $(".race-boxes").click(selectingRaceHandler);
 
 // testLink(`https://www.dnd5eapi.co/api/ability-scores`);
-
-// saved character modal
-
-const characterButton = document.querySelector('#saved-characters');
-const modalBg = document.querySelector('.modal-background');
-const modal = document.querySelector('.modal');
-
-// shows character list on button click
-characterButton.addEventListener('click', () => {
-    modal.classList.add('is-active');
-});
-
-// hides character list when clicking off window
-modalBg.addEventListener('click', () => {
-    modal.classList.remove('is-active');
-});
 
