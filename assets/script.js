@@ -45,9 +45,17 @@ var printList = function(htmlEl, list, imgFolder) {
             .text(`${list[i].name}`);
 
         var imgEl = $(`<img>`)
-            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);        
+            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
             
-        $(divEl).append(titleEl, imgEl);
+        var button1El = $(`<button>`)
+            .addClass(`raceSelect button is-medium`)
+            .text(`select`);
+        
+        var button2El = $(`<button>`)
+            .addClass(`raceInfo button is-medium`)
+            .text(`info`);
+
+        $(divEl).append(titleEl, imgEl, button1El, button2El);
         $(`${htmlEl}`).append(divEl);
     }
 }
