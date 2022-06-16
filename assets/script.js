@@ -4,6 +4,8 @@ var apiURL = `https://www.dnd5eapi.co/api/`;
 // variables
 var racesList = [];
 var raceInfo = [];
+var classList = []
+var classInfo = []
 
 // info of current character being made
 var char = {
@@ -99,3 +101,4 @@ characterButton.addEventListener('click', () => {
 modalBg.addEventListener('click', () => {
     modal.classList.remove('is-active');
 });
+
