@@ -62,6 +62,7 @@ var printList = function(htmlEl, list, imgFolder) {
     }
 }
 
+// RACE SPECIFIC FUNCTIONS ////////////////////////////////////////////////////
 // Prints races
 var printRaces = function(list) {
     racesList = list.results;
@@ -90,43 +91,10 @@ var selectingRaceHandler = function(event) {
     }    
 }
 
-getList("races", printRaces);
-
-// event listeners
-$(".race-boxes").click(selectingRaceHandler);
-
-// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
-
-var getClassList = function(serverList, setLocalList) {
-    fetch(`${apiURL}${serverList}`)
-        .then(response => response.json())
-        .then(data => {
-            setLocalList(data);
-        });
-}
-
-var printClassList = function(htmlEl, list, imgFolder) {
-    for (var i = 0; i < list.length; i++) {
-        var divEl = $(`<div>`)
-            .addClass(`class-box card`);
-
-        var titleEl = $(`<h2>`)
-            .text(`${list[i].name}`);
-
-        var imgEl = $(`<img>`)
-            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
-            
-        var button1El = $(`<button>`)
-            .addClass(`class-select button is-medium`)
-            .text(`select`);
-        
-        var button2El = $(`<button>`)
-            .addClass(`classInfo button is-medium`)
-            .text(`info`);
-
-        $(divEl).append(titleEl, imgEl, button1El, button2El);
-        $(`${htmlEl}`).append(divEl);
-    }
+// CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
+var printClasses = function(list) {
+    classList = list.results;
+    printList(".class-boxes", classList, "d&d classes");
 }
 
 var selectingClassHandler = function(event) {
@@ -145,11 +113,11 @@ var selectingClassHandler = function(event) {
     }    
 }
 
-var printClasses = function(list) {
-    classList = list.results;
-    printClassList(".class-boxes", classList, "d&d classes");
-}
+// RUNNING SCRIPT /////////////////////////////////////////////////////////////
+getList("races", printRaces);
+getList("classes", printClasses)
 
-getClassList("classes", printClasses)
+// event listeners
+$(".race-boxes").click(selectingRaceHandler);
 
-$(".class-boxes").on("click", selectingClassHandler);
+// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
