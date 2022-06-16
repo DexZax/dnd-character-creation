@@ -105,7 +105,7 @@ var getClassList = function(serverList, setLocalList) {
         });
 }
 
-var printClassList = function(htmlEl, list) {
+var printClassList = function(htmlEl, list, imgFolder) {
     for (var i = 0; i < list.length; i++) {
         var divEl = $(`<div>`)
             .addClass(`class-box card`);
@@ -113,7 +113,18 @@ var printClassList = function(htmlEl, list) {
         var titleEl = $(`<h2>`)
             .text(`${list[i].name}`);
 
-        $(divEl).append(titleEl);
+        var imgEl = $(`<img>`)
+            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
+            
+        var button1El = $(`<button>`)
+            .addClass(`class-select button is-medium`)
+            .text(`select`);
+        
+        var button2El = $(`<button>`)
+            .addClass(`classInfo button is-medium`)
+            .text(`info`);
+
+        $(divEl).append(titleEl, imgEl, button1El, button2El);
         $(`${htmlEl}`).append(divEl);
     }
 }
@@ -136,7 +147,7 @@ var selectingClassHandler = function(event) {
 
 var printClasses = function(list) {
     classList = list.results;
-    printClassList(".class-boxes", classList);
+    printClassList(".class-boxes", classList, "d&d classes");
 }
 
 getClassList("classes", printClasses)
