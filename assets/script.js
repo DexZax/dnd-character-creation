@@ -48,7 +48,7 @@ var printList = function(htmlEl, list, imgFolder) {
             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
             
         var button1El = $(`<button>`)
-            .addClass(`raceSelect button is-medium`)
+            .addClass(`race-select button is-medium`)
             .text(`select`);
         
         var button2El = $(`<button>`)
@@ -76,7 +76,7 @@ var selectingRaceHandler = function(event) {
     var target = event.target;
 
     // // ensures handler only runs when a race-box is selected
-    if (event.target.matches(`.race-box`)) {
+    if (event.target.matches(`.race-select`)) {
         // sets selected race to what was selected
         char.race = $(target).find('h2').text().toLocaleLowerCase();
 
