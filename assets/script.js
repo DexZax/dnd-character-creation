@@ -118,16 +118,21 @@ var printClassList = function(htmlEl, list, imgFolder) {
             
         var button1El = $(`<button>`)
             .addClass(`class-select button is-medium`)
-            .text(`select`);
+            .text(`Select`);
+            $(button1El).click(getClassInfo)
         
         var button2El = $(`<button>`)
             .addClass(`classInfo button is-medium`)
-            .text(`info`);
-            $(button2El).click(selectingRaceHandler);
+            .text(`Info`);
+            $(button2El).click(selectingClassHandler);
 
         $(divEl).append(titleEl, imgEl, button1El, button2El);
         $(`${htmlEl}`).append(divEl);
     }
+}
+
+var getClassInfo = function () {
+    // grab info from api and put it in model
 }
 
 var selectingClassHandler = function(event) {
