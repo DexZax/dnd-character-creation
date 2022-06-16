@@ -36,7 +36,7 @@ var getList = function(serverList, setLocalList) {
 // Print list to HTML
 // htmlEl: the html element we want to append the <li> to
 // list: the array we want to print
-var printList = function(htmlEl, list) {
+var printList = function(htmlEl, list, imgFolder) {
     for (var i = 0; i < list.length; i++) {
         var divEl = $(`<div>`)
             .addClass(`race-box`);
@@ -44,7 +44,10 @@ var printList = function(htmlEl, list) {
         var titleEl = $(`<h2>`)
             .text(`${list[i].name}`);
 
-        $(divEl).append(titleEl);
+        var imgEl = $(`<img>`)
+            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);        
+            
+        $(divEl).append(titleEl, imgEl);
         $(`${htmlEl}`).append(divEl);
     }
 }
@@ -52,7 +55,7 @@ var printList = function(htmlEl, list) {
 // Prints races
 var printRaces = function(list) {
     racesList = list.results;
-    printList(".race-boxes", racesList);
+    printList(".race-boxes", racesList, "d&d races");
 }
 
 // Store race information
