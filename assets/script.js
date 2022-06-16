@@ -38,10 +38,10 @@ var getList = function(serverList, setLocalList) {
 // Print list to HTML
 // htmlEl: the html element we want to append the <li> to
 // list: the array we want to print
-var printList = function(htmlEl, list, imgFolder) {
+var printList = function(htmlEl, list, imgFolder, propername) {
     for (var i = 0; i < list.length; i++) {
         var divEl = $(`<div>`)
-            .addClass(`race-box`);
+            .addClass(`${propername}-box`);
 
         var titleEl = $(`<h2>`)
             .text(`${list[i].name}`);
@@ -50,11 +50,11 @@ var printList = function(htmlEl, list, imgFolder) {
             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
             
         var button1El = $(`<button>`)
-            .addClass(`race-select button is-medium`)
+            .addClass(`${propername}-select button is-medium`)
             .text(`select`);
         
         var button2El = $(`<button>`)
-            .addClass(`raceInfo button is-medium`)
+            .addClass(`${propername}Info button is-medium`)
             .text(`info`);
 
         $(divEl).append(titleEl, imgEl, button1El, button2El);
@@ -62,10 +62,11 @@ var printList = function(htmlEl, list, imgFolder) {
     }
 }
 
+// RACE SPECIFIC FUNCTIONS ////////////////////////////////////////////////////
 // Prints races
 var printRaces = function(list) {
     racesList = list.results;
-    printList(".race-boxes", racesList, "d&d races");
+    printList(".race-boxes", racesList, "d&d races", "race");
 }
 
 // Store race information
@@ -90,45 +91,10 @@ var selectingRaceHandler = function(event) {
     }    
 }
 
-getList("races", printRaces);
-
-// event listeners
-$(".race-boxes").click(selectingRaceHandler);
-
-// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
-
-var getClassList = function(serverList, setLocalList) {
-    fetch(`${apiURL}${serverList}`)
-        .then(response => response.json())
-        .then(data => {
-            setLocalList(data);
-        });
-}
-
-var printClassList = function(htmlEl, list, imgFolder) {
-    for (var i = 0; i < list.length; i++) {
-        var divEl = $(`<div>`)
-            .addClass(`class-box card`);
-
-        var titleEl = $(`<h2>`)
-            .text(`${list[i].name}`);
-
-        var imgEl = $(`<img>`)
-            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
-            
-        var button1El = $(`<button>`)
-            .addClass(`class-select button is-medium`)
-            .text(`Select`);
-            $(button1El).click(getClassInfo)
-        
-        var button2El = $(`<button>`)
-            .addClass(`classInfo button is-medium`)
-            .text(`Info`);
-            $(button2El).click(selectingClassHandler);
-
-        $(divEl).append(titleEl, imgEl, button1El, button2El);
-        $(`${htmlEl}`).append(divEl);
-    }
+// CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
+var printClasses = function(list) {
+    classList = list.results;
+    printList(".class-boxes", classList, "d&d classes", "class");
 }
 
 var getClassInfo = function () {
@@ -151,14 +117,11 @@ var selectingClassHandler = function(event) {
     }    
 }
 
-var storeClassInfo = function(list) {
-    classInfo = list;
-}
+// RUNNING SCRIPT /////////////////////////////////////////////////////////////
+getList("races", printRaces);
+getList("classes", printClasses)
 
-var printClasses = function(list) {
-    classList = list.results;
-    printClassList(".class-boxes", classList, "d&d classes");
-}
+// event listeners
+$(".race-boxes").click(selectingRaceHandler);
 
-getClassList("classes", printClasses)
-
+// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
