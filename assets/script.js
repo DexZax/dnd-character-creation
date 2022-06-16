@@ -109,7 +109,7 @@ var selectingClassHandler = function(event) {
         // sets selected class to what was selected
         char.class = $(target).find('h2').text().toLocaleLowerCase();
 
-        getList(`class/${char.class}`, storeClassInfo);
+        getList(`class/${char.class}`);
         console.log("clicked " + char.class);
 
         // navigate to name
