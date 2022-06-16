@@ -108,7 +108,7 @@ var selectingClassHandler = function(event) {
         getList(`class/${char.class}`);
         console.log("clicked " + char.class);
 
-        // navigate to class
+        // navigate to name
         location.replace(`name.html?class=${char.class}`)
     }    
 }
