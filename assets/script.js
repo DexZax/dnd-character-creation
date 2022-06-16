@@ -123,6 +123,7 @@ var printClassList = function(htmlEl, list, imgFolder) {
         var button2El = $(`<button>`)
             .addClass(`classInfo button is-medium`)
             .text(`info`);
+            $(button2El).click(selectingRaceHandler);
 
         $(divEl).append(titleEl, imgEl, button1El, button2El);
         $(`${htmlEl}`).append(divEl);
@@ -132,17 +133,21 @@ var printClassList = function(htmlEl, list, imgFolder) {
 var selectingClassHandler = function(event) {
     var target = event.target;
 
-    // // ensures handler only runs when a class-box is selected
-    if (event.target.matches(`.class-box`)) {
+    // // ensures handler only runs when a select btn is selected
+    if (event.target.matches(button2El)) {
         // sets selected class to what was selected
-        char.race = $(target).find('h2').text().toLocaleLowerCase();
+        char.class = $(target).find('h2').text().toLocaleLowerCase();
 
-        getList(`class/${char.class}`);
+        getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
 
-        // navigate to class
+        // navigate to name
         location.replace(`name.html?class=${char.class}`)
     }    
+}
+
+var storeClassInfo = function(list) {
+    classInfo = list;
 }
 
 var printClasses = function(list) {
@@ -152,4 +157,3 @@ var printClasses = function(list) {
 
 getClassList("classes", printClasses)
 
-$(".class-boxes").on("click", selectingClassHandler);
