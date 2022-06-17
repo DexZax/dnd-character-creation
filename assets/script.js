@@ -40,25 +40,52 @@ var getList = function(serverList, setLocalList) {
 // list: the array we want to print
 var printList = function(htmlEl, list, imgFolder) {
     for (var i = 0; i < list.length; i++) {
+        var cardDivEl = $(`<div>`)
+            .addClass(`column is-4-tablet is-3-desktop`);
+
         var divEl = $(`<div>`)
             .addClass(`race-box card`);
+        
+        var divEl2 = $(`<div>`)
+            .addClass(`card-content`);
 
-        var titleEl = $(`<h2>`)
+        var divEl3 = $(`<div>`)
+            .addClass(`card-image has-text-centered px-6`);
+
+        var footerEl = $(`<footer>`)
+            .addClass(`card-footer`);
+
+        var footerP = $(`<p>`)
+            .addClass(`card-footer-item`);
+
+        var footerP2 = $(`<p>`)
+            .addClass(`card-footer-item`);
+
+        var selectEl = $(`<a>`)
+            .addClass(`has-text-grey`)
+            .text(`select`);
+
+        var infoEl = $(`<a>`)
+            .addClass(`has-text-grey`)
+            .text(`info`);
+
+        var titleEl = $(`<p>`)
+            .addClass(`title is-size-5 has-text-centered`)
             .text(`${list[i].name}`);
 
         var imgEl = $(`<img>`)
+            .addClass(`class-img`)
             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
             
-        var button1El = $(`<button>`)
-            .addClass(`race-select button is-medium`)
-            .text(`select`);
-        
-        var button2El = $(`<button>`)
-            .addClass(`raceInfo button is-medium`)
-            .text(`info`);
+        $(cardDivEl).append(divEl);
+        $(divEl).append(divEl2, divEl3, footerEl);
+        $(divEl2).append(titleEl);
+        $(divEl3).append(imgEl);
+        $(footerEl).append(footerP, footerP2);
+        $(footerP).append(selectEl);
+        $(footerP2).append(infoEl);
 
-        $(divEl).append(titleEl, imgEl, button1El, button2El);
-        $(`${htmlEl}`).append(divEl);
+        $(`${htmlEl}`).append(cardDivEl);
     }
 }
 
