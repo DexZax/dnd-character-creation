@@ -22,7 +22,7 @@
 
 @media (min-width: 800px) {
     :root {
-        --fs-h1: 3.5rem;
+        --fs-h1: 4rem;
         --fs-h2: 3.75rem;
         --fs-h3: 1.5rem;
         --fs-body: 1.5rem;
@@ -30,10 +30,6 @@
 }
 
 /* landing page style */
-
-.da-landing-page {
-
-}
 
 /* general */
 
@@ -43,7 +39,7 @@ html {
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Candara;
     margin: 0;
     min-height: 100vh;
     background:
@@ -52,7 +48,7 @@ body {
 }
 
 h1 {
-    font-size: var(--fs-h1)
+    font-size: var(--fs-h1);
 }
 
 h3 {
@@ -67,6 +63,10 @@ h3 {
 }
 
 /* landing page style */
+.landing-section {
+    margin-top: 500px;
+}
+
 .landing-text {
     width: 30vw;
     height: 70vh;
