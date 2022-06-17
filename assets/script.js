@@ -41,7 +41,7 @@ var getList = function(serverList, setLocalList) {
 var printList = function(htmlEl, list, imgFolder) {
     for (var i = 0; i < list.length; i++) {
         var cardDivEl = $(`<div>`)
-            .addClass(`column is-4-tablet is-3-desktop`);
+            .addClass(`column is is-12-mobile is-6-tablet is-4-desktop`);
 
         var divEl = $(`<div>`)
             .addClass(`race-box card`);
@@ -62,7 +62,7 @@ var printList = function(htmlEl, list, imgFolder) {
             .addClass(`card-footer-item`);
 
         var selectEl = $(`<a>`)
-            .addClass(`has-text-grey`)
+            .addClass(`race-select has-text-grey`)
             .text(`select`);
 
         var infoEl = $(`<a>`)
@@ -83,7 +83,7 @@ var printList = function(htmlEl, list, imgFolder) {
         $(divEl3).append(imgEl);
         $(footerEl).append(footerP, footerP2);
         $(footerP).append(selectEl);
-        $(footerP2).append(infoEl);
+        $(footerP2  ).append(infoEl);
 
         $(`${htmlEl}`).append(cardDivEl);
     }
@@ -107,7 +107,7 @@ var selectingRaceHandler = function(event) {
     // // ensures handler only runs when a race-box is selected
     if (event.target.matches(`.race-select`)) {
         // sets selected race to what was selected
-        char.race = $(target).find('h2').text().toLocaleLowerCase();
+        char.race = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`races/${char.race}`, storeRaceInfo);
         console.log("clicked " + char.race);
@@ -132,28 +132,78 @@ var getClassList = function(serverList, setLocalList) {
         });
 }
 
+// var printClassList = function(htmlEl, list, imgFolder) {
+//     for (var i = 0; i < list.length; i++) {
+//         var divEl = $(`<div>`)
+//             .addClass(`class-box card`);
+
+//         var titleEl = $(`<h2>`)
+//             .text(`${list[i].name}`);
+
+//         var imgEl = $(`<img>`)
+//             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
+            
+//         var button1El = $(`<button>`)
+//             .addClass(`class-select button is-medium`)
+//             .text(`select`);
+        
+//         var button2El = $(`<button>`)
+//             .addClass(`classInfo button is-medium`)
+//             .text(`info`);
+//         $(button2El).click(selectingRaceHandler);
+
+//         $(divEl).append(titleEl, imgEl, button1El, button2El);
+//         $(`${htmlEl}`).append(divEl);
+//     }
+// }
+
 var printClassList = function(htmlEl, list, imgFolder) {
     for (var i = 0; i < list.length; i++) {
+        var cardDivEl = $(`<div>`)
+            .addClass(`column column is is-12-mobile is-6-tablet is-4-desktop`);
+
         var divEl = $(`<div>`)
             .addClass(`class-box card`);
+        
+        var divEl2 = $(`<div>`)
+            .addClass(`card-content`);
 
-        var titleEl = $(`<h2>`)
+        var divEl3 = $(`<div>`)
+            .addClass(`card-image has-text-centered px-6`);
+
+        var footerEl = $(`<footer>`)
+            .addClass(`card-footer`);
+
+        var footerP = $(`<p>`)
+            .addClass(`card-footer-item`);
+
+        var footerP2 = $(`<p>`)
+            .addClass(`card-footer-item`);
+
+        var selectEl = $(`<a>`)
+            .addClass(`class-select has-text-grey`)
+            .text(`select`);
+
+        var infoEl = $(`<a>`)
+            .addClass(`has-text-grey`)
+            .text(`info`);
+
+        var titleEl = $(`<p>`)
+            .addClass(`title is-size-5 has-text-centered`)
             .text(`${list[i].name}`);
 
         var imgEl = $(`<img>`)
+            .addClass(`class-img`)
             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
             
-        var button1El = $(`<button>`)
-            .addClass(`class-select button is-medium`)
-            .text(`select`);
-        
-        var button2El = $(`<button>`)
-            .addClass(`classInfo button is-medium`)
-            .text(`info`);
-            $(button2El).click(selectingRaceHandler);
-
-        $(divEl).append(titleEl, imgEl, button1El, button2El);
-        $(`${htmlEl}`).append(divEl);
+        $(cardDivEl).append(divEl);
+        $(divEl).append(divEl2, divEl3, footerEl);
+        $(divEl2).append(titleEl);
+        $(divEl3).append(imgEl);
+        $(footerEl).append(footerP, footerP2);
+        $(footerP).append(selectEl);
+        $(footerP2  ).append(infoEl);
+        $(`${htmlEl}`).append(cardDivEl);
     }
 }
 
@@ -161,9 +211,9 @@ var selectingClassHandler = function(event) {
     var target = event.target;
 
     // // ensures handler only runs when a select btn is selected
-    if (event.target.matches(button2El)) {
+    if (event.target.matches(`.class-select`)) {
         // sets selected class to what was selected
-        char.class = $(target).find('h2').text().toLocaleLowerCase();
+        char.class = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
