@@ -41,7 +41,7 @@ var getList = function(serverList, setLocalList) {
 var printList = function(htmlEl, list, imgFolder) {
     for (var i = 0; i < list.length; i++) {
         var divEl = $(`<div>`)
-            .addClass(`race-box`);
+            .addClass(`race-box card`);
 
         var titleEl = $(`<h2>`)
             .text(`${list[i].name}`);

@@ -12,8 +12,8 @@
     --fs-h3: 1.25rem;
     --fs-body: 1rem;
     /* background shadow */
-    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
-          0.125em 0.12em 0.25em rgba(0,0,0,.15);
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.10),
+          0.125em 0.12em 0.25em rgba(0,0,0,.10);
     /* colours */
     --clr-light: #ffff;
     --clr-dark: #797878;
@@ -31,6 +31,10 @@
 
 /* landing page style */
 
+.da-landing-page {
+
+}
+
 /* general */
 
 html {
@@ -39,15 +43,12 @@ html {
 }
 
 body {
-    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
     min-height: 100vh;
-    /* background: */
-    /* linear-gradient( rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5) ),
-    url('../assets/images/wallpaperflare-cropped.jpg');
-    background-size: cover;
-    background-position: 80%; */
+    background:
+    linear-gradient( rgba(250, 250, 250, 1),
+    rgba(0, 0, 0, 0.3) )
 }
 
 h1 {
@@ -61,41 +62,21 @@ h3 {
 
 /* header section */
 
-header {
-    background: var(--clr-light);
-    border-bottom: 4px solid red;
-    display: flex;
-    justify-content: space-between;
+.navbar {
+    box-shadow: var(--bs);
 }
 
-.header-logo {
-    width: 15vw;
-    height: 100%;
-    margin-left: 1em;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-}
-
-.nav-item {
-    font-size: var(--fs-body);
-    margin-right: 1em;
-    font-weight: var(--fw-reg);
-}
-
-.nav-item:hover {
-    cursor: pointer;
-}
-
-.landing {
-    width: 70vw;
+/* landing page style */
+.landing-text {
+    width: 30vw;
     height: 70vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 5vw 15vw 0 15vw;
+}
+
+.landing-content {
+    margin-top: 50px;
 }
 
 .landing-title {
@@ -140,6 +121,9 @@ header {
     }
 }
 
+    .accent1 {
+}
+
 /* races page style */ 
 
  .box-container {
@@ -155,10 +139,16 @@ header {
     flex-wrap: wrap;
 }
 
-.race-boxes div, .class-boxes div {
-    border: 1px solid black;
+.race-boxes div {
+    position: relative;
     width: 270px;
     height: 550px;
+    margin: 30px;
+}
+
+.class-boxes div {
+    width: 270px;
+    height: 500px;
     margin: 30px;
 }
 
@@ -170,4 +160,14 @@ header {
     margin-left: 5px;
 }
 
+.race-box {
 
+}
+
+.race-select, .raceInfo, .class-select, .classInfo {
+    width: 50%;
+}
+
+.race-box img {
+    width: 100%;
+}

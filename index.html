@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,14 +12,15 @@
     <title>D&D Creation Tool</title>
 </head>
 
-<body>
+<body class="da-landing-page">
 
     <!-- navbar -->
-    <nav class="navbar has-shadow is-white">
+    <nav class="navbar is-white">
         <!-- logo -->
         <div class="navbar-brand">
-            <img src="./assets/images/Dungeons-and-Dragons-Logo-2014.png" alt="dungeons and dragons logo" style="max-height: 80px" class="px-2 py-2">
-         </div>
+            <img src="./assets/images/DnD-Logo.png" alt="dungeons and dragons logo" style="max-height: 90px"
+                class="px-2 py-2">
+        </div>
         <!-- character button -->
         <div class="navbar-menu" id="nav-links">
             <div class="navbar-end">
@@ -38,17 +40,26 @@
 
     <!-- welcome -->
 
-    <section class="content has-text-centered mt-6">
+    <section class="columns content is-centered mt-6">
+
+        <div class="column is-3-desktop is-3-tablet">
+            <img class="landing-img" src="/assets/images/favpng_shadow-person-dungeons-dragons-silhouette-art.png" alt=""
+            class="accent1">
+        </div>
+        <div class="column is-2-desktop is-4-tablet mt-6">
         <h1 class="mb-6">Character Creator</h1>
         <p class="mb-6">Creating a character for D&D can take a very long time. With so many little details and
             options to consider, our tool will help speed up this process, so you can get into the game sooner!</p>
+
+        <a href="races.html">
+            <button href="/races.html" class="button is-danger is-large">Begin</button>
+        </a>
+        </div>
     </section>
 
-    <div class="has-text-centered">
-        <a href="races.html">
-        <button href="/races.html" class="button is-danger is-large">Begin</button>
-        </a>
-    </div>
+
+
+
 
 </body>
 
