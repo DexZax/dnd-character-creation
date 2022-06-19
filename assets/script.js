@@ -81,7 +81,7 @@ var selectingRaceHandler = function(event) {
     // // ensures handler only runs when a race-box is selected
     if (event.target.matches(`.race-select`)) {
         // sets selected race to what was selected
-        char.race = $(target).find('h2').text().toLocaleLowerCase();
+        char.race = $(target).parents(`.race-box`).find('h2').text().toLocaleLowerCase();
 
         getList(`races/${char.race}`, storeRaceInfo);
         console.log("clicked " + char.race);
