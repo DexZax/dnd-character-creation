@@ -110,7 +110,8 @@ var selectingClassHandler = function(event) {
         console.log("clicked " + char.class);
 
         // navigate to name
-        location.replace(`name.html?class=${char.class}`)
+        location.replace(`name.html?class=${char.class}`);
+        // return char.class;
     }    
 }
 
