@@ -97,24 +97,25 @@ var printClasses = function(list) {
     printList(".class-boxes", classList, "d&d classes", "class");
 }
 
-var getClassInfo = function () {
-    // grab info from api and put it in model
-}
 
 var selectingClassHandler = function(event) {
     var target = event.target;
 
     // // ensures handler only runs when a select btn is selected
-    if (event.target.matches(button2El)) {
+    if (event.target.matches(`.class-select`)) {
         // sets selected class to what was selected
         char.class = $(target).find('h2').text().toLocaleLowerCase();
 
-        getList(`class/${char.class}`);
+        getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
 
         // navigate to name
         location.replace(`name.html?class=${char.class}`)
     }    
+}
+
+var storeClassInfo = function(list) {
+    classInfo = list;
 }
 
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
@@ -123,5 +124,6 @@ getList("classes", printClasses)
 
 // event listeners
 $(".race-boxes").click(selectingRaceHandler);
+$(".class-boxes").click(selectingClassHandler);
 
 // testLink(`https://www.dnd5eapi.co/api/ability-scores`);
