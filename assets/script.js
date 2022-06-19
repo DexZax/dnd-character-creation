@@ -92,6 +92,18 @@ var selectingRaceHandler = function(event) {
     }    
 }
 
+var getQuerySelections = function(argument) {
+    var currentUrl = window.location.href.toString()
+    // var testUrl = "dnd.com/name.html?race=dwarf&class=priest"
+    var selections = currentUrl.split("?")[1];
+    console.log(selections);
+    var seperatedSelections = selections.split("&");
+    for (var i = 0; i < seperatedSelections.length; i++) {
+        if (argument === seperatedSelections[i].split("=")[0]) {
+            return seperatedSelections[i].split("=")[1];
+        }
+    }
+}
 
 
 // CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
@@ -112,8 +124,10 @@ var selectingClassHandler = function(event) {
         getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
 
+        var race = getQuerySelections("race");
+
         // navigate to name
-        location.replace(`name.html?class=${char.class}?race=${grabRaceFromQuery}`);
+        location.replace(`name.html?class=${char.class}&race=${race}`);
         // return char.class;
     }    
 }
