@@ -128,7 +128,8 @@ var selectingClassHandler = function(event) {
 
         // navigate to name
         location.replace(`name.html?class=${char.class}&race=${race}`);
-        // return char.class;
+        // getCharacterDetails("class");
+        // getCharacterDetails("race");
     }    
 }
 
@@ -136,12 +137,26 @@ var storeClassInfo = function(list) {
     classInfo = list;
 }
 
+// fetch api for name page
+var getCharacterDetails = function(selection) {
+    var charUrl = `https://www.dnd5eapi.co/api/race/${selection}/${getQuerySelections(selection)}`;
+    fetch(charUrl) 
+        .then(response => response.json())
+        .then(data => {
+        console.log(data);
+        });
+};
+
+
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
 getList("races", printRaces);
 getList("classes", printClasses)
+
 
 // event listeners
 $(".race-boxes").click(selectingRaceHandler);
 $(".class-boxes").click(selectingClassHandler);
 
-// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
+// testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
+getCharacterDetails("class");
+getCharacterDetails("race");
