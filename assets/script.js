@@ -104,7 +104,7 @@ var selectingClassHandler = function(event) {
     // // ensures handler only runs when a select btn is selected
     if (event.target.matches(`.class-select`)) {
         // sets selected class to what was selected
-        char.class = $(target).find('h2').text().toLocaleLowerCase();
+        char.class = $(target).parents(`.class-box`).find('h2').text().toLocaleLowerCase();
 
         getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
