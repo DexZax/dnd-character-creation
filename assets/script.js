@@ -88,8 +88,11 @@ var selectingRaceHandler = function(event) {
 
         // navigate to class
         location.replace(`classes.html?race=${char.race}`)
+        storeRaceSelection(char.race);
     }    
 }
+
+
 
 // CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
 var printClasses = function(list) {
@@ -110,7 +113,7 @@ var selectingClassHandler = function(event) {
         console.log("clicked " + char.class);
 
         // navigate to name
-        location.replace(`name.html?class=${char.class}`);
+        location.replace(`name.html?class=${char.class}?race=${grabRaceFromQuery}`);
         // return char.class;
     }    
 }
