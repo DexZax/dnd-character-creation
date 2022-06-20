@@ -66,7 +66,7 @@ var printList = function(htmlEl, list, imgFolder) {
             .text(`select`);
 
         var infoEl = $(`<a>`)
-            .addClass(`has-text-grey`)
+            .addClass(`has-text-grey race-info-btn`)
             .text(`info`);
 
         var titleEl = $(`<p>`)
@@ -103,6 +103,7 @@ var storeRaceInfo = function(list) {
 // Handler for when selecting a race
 var selectingRaceHandler = function(event) {
     var target = event.target;
+    var modal = document.querySelector('.modal');
 
     // // ensures handler only runs when a race-box is selected
     if (event.target.matches(`.race-select`)) {
@@ -115,6 +116,11 @@ var selectingRaceHandler = function(event) {
         // navigate to class
         location.replace(`classes.html?race=${char.race}`)
     }    
+
+    if (event.target.matches(`.race-info-btn`)) {
+        
+        modal.classList.add('is-active');
+    }
 }
 
 getList("races", printRaces);
@@ -185,7 +191,7 @@ var printClassList = function(htmlEl, list, imgFolder) {
             .text(`select`);
 
         var infoEl = $(`<a>`)
-            .addClass(`has-text-grey`)
+            .addClass(`has-text-grey class-info-btn`)
             .text(`info`);
 
         var titleEl = $(`<p>`)
