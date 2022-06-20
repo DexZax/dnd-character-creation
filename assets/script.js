@@ -171,12 +171,13 @@ var displayInfo = function(data, specificSelection, selection) {
         $(`.${specificSelection}-info`).append(titleEl, info);
     }else {
         var titleEl = $("<h2>").text(`${getQuerySelections(selection)}`);
+        var subheading = $("<p>").text("proficiencies:");
+        $(`.${specificSelection}-info`).append(titleEl, subheading);
         for (var i = 0; i < data.proficiencies.length; i++) {
-            var info = $("<p>").text(`Proficiencies: ${data.proficiencies[i].index}`);
+            var info = $("<p>").text(`${data.proficiencies[i].index}`);
+            $(`.${specificSelection}-info`).append(info);
         }
-        $(`.${specificSelection}-info`).append(titleEl, info);
-    }
-     
+    }  
 }
 
 
