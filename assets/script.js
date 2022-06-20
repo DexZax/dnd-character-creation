@@ -96,7 +96,7 @@ var getQuerySelections = function(argument) {
     var currentUrl = window.location.href.toString()
     // var testUrl = "dnd.com/name.html?race=dwarf&class=priest"
     var selections = currentUrl.split("?")[1];
-    console.log(selections);
+    // console.log(selections);
     var seperatedSelections = selections.split("&");
     for (var i = 0; i < seperatedSelections.length; i++) {
         if (argument === seperatedSelections[i].split("=")[0]) {
@@ -127,8 +127,9 @@ var selectingClassHandler = function(event) {
         var race = getQuerySelections("race");
 
         // navigate to name
-        location.replace(`name.html?class=${char.class}&race=${race}`);
-        // return char.class;
+        location.replace(`name.html?race=${race}&class=${char.class}`);
+        // getCharacterDetails("class");
+        // getCharacterDetails("race");
     }    
 }
 
@@ -136,12 +137,58 @@ var storeClassInfo = function(list) {
     classInfo = list;
 }
 
+// fetch api for name page
+var getCharacterDetails = function(selection) {  
+    var selectionType;
+    var specificSelection;
+
+    // determines the type of data we want
+    switch (true) {
+        case (selection == 'race'):
+            selectionType = 'races';
+            specificSelection = `race`;
+            break;
+        case (selection == 'class'):
+            selectionType = 'classes';
+            specificSelection = `class`;
+            break;
+    }
+    
+    var charUrl = `https://www.dnd5eapi.co/api/${selectionType}/${getQuerySelections(selection)}`;
+    fetch(charUrl) 
+        .then(response => response.json())
+        .then(data => {
+            displayInfo(data, specificSelection, selection);
+        });
+};
+
+var displayInfo = function(data, specificSelection, selection) {
+
+    if (specificSelection == "race") {
+        var titleEl = $("<h2>").text(`${getQuerySelections(selection)}`);
+        info = $("<p>").text(data.alignment);
+        $(`.${specificSelection}-info`).append(titleEl, info);
+    }else {
+        var titleEl = $("<h2>").text(`${getQuerySelections(selection)}`);
+        var subheading = $("<p>").text("proficiencies:");
+        $(`.${specificSelection}-info`).append(titleEl, subheading);
+        for (var i = 0; i < data.proficiencies.length; i++) {
+            var info = $("<p>").text(`${data.proficiencies[i].index}`);
+            $(`.${specificSelection}-info`).append(info);
+        }
+    }  
+}
+
+
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
 getList("races", printRaces);
 getList("classes", printClasses)
+
 
 // event listeners
 $(".race-boxes").click(selectingRaceHandler);
 $(".class-boxes").click(selectingClassHandler);
 
-// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
+// testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
+getCharacterDetails("class");
+getCharacterDetails("race");
