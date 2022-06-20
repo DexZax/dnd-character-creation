@@ -140,14 +140,17 @@ var storeClassInfo = function(list) {
 // fetch api for name page
 var getCharacterDetails = function(selection) {  
     var selectionType;
+    var specificSelection;
 
     // determines the type of data we want
     switch (true) {
         case (selection == 'race'):
             selectionType = 'races';
+            specificSelection = `race`;
             break;
         case (selection == 'class'):
             selectionType = 'classes';
+            specificSelection = `class`;
             break;
     }
     
@@ -156,8 +159,25 @@ var getCharacterDetails = function(selection) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            displayInfo(data, specificSelection, selection);
         });
 };
+
+var displayInfo = function(data, specificSelection, selection) {
+
+    if (specificSelection == "race") {
+        var titleEl = $("<h2>").text(`${getQuerySelections(selection)}`);
+        info = $("<p>").text(data.alignment);
+        $(`.${specificSelection}-info`).append(titleEl, info);
+    }else {
+        var titleEl = $("<h2>").text(`${getQuerySelections(selection)}`);
+        for (var i = 0; i < data.proficiencies.length; i++) {
+            var info = $("<p>").text(`Proficiencies: ${data.proficiencies[i].index}`);
+        }
+        $(`.${specificSelection}-info`).append(titleEl, info);
+    }
+     
+}
 
 
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
