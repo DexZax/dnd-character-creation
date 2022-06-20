@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* font-weight */
+    --fw-reg: 400;
+    --fw-bold: 900;
+    /* font-size */
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+    /* background shadow */
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+          0.125em 0.12em 0.25em rgba(0,0,0,.15);
+    /* colours */
+    --clr-light: #ffff;
+    --clr-dark: #797878;
+    --clr-accent: #8f1313;
+}
+
+@media (min-width: 800px) {
+    :root {
+        --fs-h1: 3.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.5rem;
+    }
+}
+
+/* landing page style */
+
+/* general */
+
+html {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+    margin: 0;
+    min-height: 100vh;
+    /* background: */
+    /* linear-gradient( rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5) ),
+    url('../assets/images/wallpaperflare-cropped.jpg');
+    background-size: cover;
+    background-position: 80%; */
+}
+
+h1 {
+    font-size: var(--fs-h1)
+}
+
+h3 {
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-reg);
+}
+
+/* header section */
+
+header {
+    background: var(--clr-light);
+    border-bottom: 4px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-logo {
+    width: 15vw;
+    height: 100%;
+    margin-left: 1em;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    font-size: var(--fs-body);
+    margin-right: 1em;
+    font-weight: var(--fw-reg);
+}
+
+.nav-item:hover {
+    cursor: pointer;
+}
+
+.landing {
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5vw 15vw 0 15vw;
+}
+
+.landing-title {
+    text-align: center;
+}
+
+.landing-info {
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+.character-start {
+    width: 100px;
+    height: 50px;
+}
+
+.character-start:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    :root {
+        /* font-weight */
+        --fw-reg: 400;
+        --fw-bold: 900;
+        /* font-size */
+        --fs-h1: 2rem;
+        --fs-h2: 2.25rem;
+        --fs-h3: 1rem;
+        --fs-body: 1rem;
+    }
+    
+    .character-start {
+        width: 80px;
+        height: 40px;
+    }
+    
+    .header-logo {
+        width: 30vw;
+        height: 100%;
+        margin-left: 1em;
+    }
+}
+
+/* races page style */ 
+
+ .box-container {
+    display: flex;
+    width: 80vw;
+    justify-content: center;
+    margin-left: 10vw;
+}
+
+.race-boxes, .class-boxes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.race-boxes div, .class-boxes div {
+    border: 1px solid black;
+    width: 270px;
+    height: 550px;
+    margin: 30px;
+}
+
+.race-box h2, .class-box h2 {
+    text-align: center;
+}
+
+.race-box p, .class-box p {
+    margin-left: 5px;
+}
+
+
