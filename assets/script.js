@@ -158,7 +158,6 @@ var getCharacterDetails = function(selection) {
     fetch(charUrl) 
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             displayInfo(data, specificSelection, selection);
         });
 };
