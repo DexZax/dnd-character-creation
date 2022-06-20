@@ -96,7 +96,7 @@ var getQuerySelections = function(argument) {
     var currentUrl = window.location.href.toString()
     // var testUrl = "dnd.com/name.html?race=dwarf&class=priest"
     var selections = currentUrl.split("?")[1];
-    console.log(selections);
+    // console.log(selections);
     var seperatedSelections = selections.split("&");
     for (var i = 0; i < seperatedSelections.length; i++) {
         if (argument === seperatedSelections[i].split("=")[0]) {
@@ -127,7 +127,7 @@ var selectingClassHandler = function(event) {
         var race = getQuerySelections("race");
 
         // navigate to name
-        location.replace(`name.html?class=${char.class}&race=${race}`);
+        location.replace(`name.html?race=${race}&class=${char.class}`);
         // getCharacterDetails("class");
         // getCharacterDetails("race");
     }    
@@ -138,12 +138,24 @@ var storeClassInfo = function(list) {
 }
 
 // fetch api for name page
-var getCharacterDetails = function(selection) {
-    var charUrl = `https://www.dnd5eapi.co/api/race/${selection}/${getQuerySelections(selection)}`;
+var getCharacterDetails = function(selection) {  
+    var selectionType;
+
+    // determines the type of data we want
+    switch (true) {
+        case (selection == 'race'):
+            selectionType = 'races';
+            break;
+        case (selection == 'class'):
+            selectionType = 'classes';
+            break;
+    }
+    
+    var charUrl = `https://www.dnd5eapi.co/api/${selectionType}/${getQuerySelections(selection)}`;
     fetch(charUrl) 
         .then(response => response.json())
         .then(data => {
-        console.log(data);
+            console.log(data);
         });
 };
 
