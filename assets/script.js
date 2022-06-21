@@ -9,8 +9,8 @@ var classInfo = []
 
 // info of current character being made
 var char = {
-    race: "",
-    class: "",
+    race: "black",
+    class: "white",
     name: ""
 }
 
@@ -179,6 +179,16 @@ var displayInfo = function(data, specificSelection, selection) {
     }  
 }
 
+var savehandler= function(){
+    console.log(char.race) 
+    console.log(char.class)
+    // get value from input 
+    char.name= $('#name').val()
+    // 
+    // set name input into char.name 
+    // end goal - console log char.name
+    console.log(char.name) 
+}
 
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
 getList("races", printRaces);
@@ -188,6 +198,7 @@ getList("classes", printClasses)
 // event listeners
 $(".race-boxes").click(selectingRaceHandler);
 $(".class-boxes").click(selectingClassHandler);
+$("#submit").click(savehandler)
 
 // testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
 getCharacterDetails("class");
