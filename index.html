@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,15 +15,16 @@
 <body>
 
     <!-- navbar -->
-    <nav class="navbar has-shadow is-white">
+    <nav class="navbar is-white">
         <!-- logo -->
         <div class="navbar-brand">
-            <img src="./assets/images/Dungeons-and-Dragons-Logo-2014.png" alt="dungeons and dragons logo" style="max-height: 80px" class="px-2 py-2">
-         </div>
+            <img src="./assets/images/DnD-Logo.png" alt="dungeons and dragons logo" style="max-height: 90px"
+                class="px-2 py-2">
+        </div>
         <!-- character button -->
         <div class="navbar-menu" id="nav-links">
             <div class="navbar-end">
-                <a class="navbar-item" id="saved-characters">Characters</a>
+                <a class="navbar-item is-size-4-desktop is-size-5-mobile" id="saved-characters">Characters</a>
             </div>
         </div>
     </nav>
@@ -38,18 +40,29 @@
 
     <!-- welcome -->
 
-    <section class="content has-text-centered mt-6">
-        <h1 class="mb-6">Character Creator</h1>
-        <p class="mb-6">Creating a character for D&D can take a very long time. With so many little details and
-            options to consider, our tool will help speed up this process, so you can get into the game sooner!</p>
+    <section class="columns content is-centered mt-6">
+
+        <div class="column is-2-desktop is-3-tablet is-4-mobile m-6">
+            <img class="landing-img" src="./assets/images/drgn1.png"
+                alt="" class="accent1">
+        </div>
+
+        <div class="column is-3-desktop is-4-tablet is-6-mobile mt-3 ml-6 has-text-centered">
+            <h1 class="mb-6 is-size-2-desktop is-size-4-mobile is-size-3-tablet">Character Creator</h1>
+            <p class="mb-6 is-size-5">Creating a character for D&D can take a very long time. With so many little details and
+                options to consider, our tool will help speed up this process, so you can get into the game sooner!</p>
+
+            <a href="races.html">
+                <button class="button is-dark is-large">Begin</button>
+            </a>
+        </div>
+
+        <div class="column is-2-desktop is-3-tablet is-4-mobile m-6">
+            <img class="landing-img" src="./assets/images/drgn2.png"
+                alt="" class="accent1">
+        </div>
+        
     </section>
 
-    <div class="has-text-centered">
-        <a href="races.html">
-        <button href="/races.html" class="button is-danger is-large">Begin</button>
-        </a>
-    </div>
-
 </body>
-
 </html>
