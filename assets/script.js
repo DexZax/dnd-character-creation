@@ -40,16 +40,13 @@ var getList = function(serverList, setLocalList) {
 // list: the array we want to print
 var printList = function(htmlEl, list, imgFolder, propername) {
     for (var i = 0; i < list.length; i++) {
-<<<<<<< HEAD
         var divEl = $(`<div>`)
             .addClass(`${propername}-box`);
-=======
         var cardDivEl = $(`<div>`)
             .addClass(`column is is-12-mobile is-6-tablet is-4-desktop`);
->>>>>>> bulma-cards-js
 
         var divEl = $(`<div>`)
-            .addClass(`race-box card`);
+            .addClass(`${propername}-box card`);
         
         var divEl2 = $(`<div>`)
             .addClass(`card-content`);
@@ -82,7 +79,6 @@ var printList = function(htmlEl, list, imgFolder, propername) {
             .addClass(`class-img`)
             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
             
-<<<<<<< HEAD
         var button1El = $(`<button>`)
             .addClass(`${propername}-select button is-medium`)
             .text(`select`);
@@ -90,7 +86,6 @@ var printList = function(htmlEl, list, imgFolder, propername) {
         var button2El = $(`<button>`)
             .addClass(`${propername}Info button is-medium`)
             .text(`info`);
-=======
         $(cardDivEl).append(divEl);
         $(divEl).append(divEl2, divEl3, footerEl);
         $(divEl2).append(titleEl);
@@ -98,7 +93,6 @@ var printList = function(htmlEl, list, imgFolder, propername) {
         $(footerEl).append(footerP, footerP2);
         $(footerP).append(selectEl);
         $(footerP2  ).append(infoEl);
->>>>>>> bulma-cards-js
 
         $(`${htmlEl}`).append(cardDivEl);
     }
@@ -123,11 +117,8 @@ var selectingRaceHandler = function(event) {
     // // ensures handler only runs when a race-box is selected
     if (event.target.matches(`.race-select`)) {
         // sets selected race to what was selected
-<<<<<<< HEAD
         char.race = $(target).parents(`.race-box`).find('h2').text().toLocaleLowerCase();
-=======
         char.race = $(target).find('p').text().toLocaleLowerCase();
->>>>>>> bulma-cards-js
 
         getList(`races/${char.race}`, storeRaceInfo);
         console.log("clicked " + char.race);
@@ -138,7 +129,6 @@ var selectingRaceHandler = function(event) {
     }    
 }
 
-<<<<<<< HEAD
 var getQuerySelections = function(argument) {
     var currentUrl = window.location.href.toString()
     // var testUrl = "dnd.com/name.html?race=dwarf&class=priest"
@@ -149,7 +139,7 @@ var getQuerySelections = function(argument) {
         if (argument === seperatedSelections[i].split("=")[0]) {
             return seperatedSelections[i].split("=")[1];
         }
-=======
+    }}
 getList("races", printRaces);
 
 // event listeners
@@ -237,7 +227,6 @@ var printClassList = function(htmlEl, list, imgFolder) {
         $(footerP).append(selectEl);
         $(footerP2  ).append(infoEl);
         $(`${htmlEl}`).append(cardDivEl);
->>>>>>> bulma-cards-js
     }
 }
 
@@ -255,11 +244,8 @@ var selectingClassHandler = function(event) {
     // // ensures handler only runs when a select btn is selected
     if (event.target.matches(`.class-select`)) {
         // sets selected class to what was selected
-<<<<<<< HEAD
         char.class = $(target).parents(`.class-box`).find('h2').text().toLocaleLowerCase();
-=======
         char.class = $(target).find('p').text().toLocaleLowerCase();
->>>>>>> bulma-cards-js
 
         getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
