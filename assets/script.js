@@ -89,7 +89,24 @@ var selectingRaceHandler = function(event) {
         // navigate to class
         location.replace(`classes.html?race=${char.race}`)
         storeRaceSelection(char.race);
-    }    
+
+    }  else if (event.target.matches(`.raceInfo`)) {
+        char.race = $(target).parents(`.race-box`).find('h2').text().toLocaleLowerCase();
+        var apiUrl = `https://www.dnd5eapi.co/api/races/${char.race}`
+        fetch(apiUrl) 
+        .then(response => response.json())
+        .then(data => {
+            
+            $(`.modal`).addClass(`is-active`);
+            $(`.infoContainer`).empty()
+            var sub = $("<p>").text(`${char.race}`)
+            var info = $("<p>").text(data.alignment);
+            $(`.infoContainer`).append(sub, info);
+            $(`.modal-background`).on(`click`, () => {
+                $(`.modal`).removeClass('is-active');
+            })
+    });
+}
 }
 
 var getQuerySelections = function(argument) {
@@ -128,9 +145,28 @@ var selectingClassHandler = function(event) {
 
         // navigate to name
         location.replace(`name.html?race=${race}&class=${char.class}`);
-        // getCharacterDetails("class");
-        // getCharacterDetails("race");
-    }    
+
+    }  
+    else if (target.matches(`.classInfo`)) {
+        char.class = $(target).parents(`.class-box`).find('h2').text().toLocaleLowerCase();
+        var apiUrl = `https://www.dnd5eapi.co/api/classes/${char.class}`
+        fetch(apiUrl) 
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            $(`.modal`).addClass(`is-active`);
+            $(`.infoContainer`).empty()
+            var sub = $("<p>").text(`${char.class} Proficiencies:`)
+            $(`.infoContainer`).append(sub);
+            for (var i = 0; i < data.proficiencies.length; i++) {
+                var info = $("<p>").text(`${data.proficiencies[i].index}`);
+                $(`.infoContainer`).append(info);
+            }
+            $(`.modal-background`).on(`click`, () => {
+                $(`.modal`).removeClass('is-active');
+            })
+        });
+    }
 }
 
 var storeClassInfo = function(list) {
