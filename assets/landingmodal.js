@@ -27,6 +27,10 @@ var printCharList = function(htmlEl) {
     $(".saved-title").text("Saved Characters")
 
     for (var i = 0; i < characters.length; i++) {
+        // converts time to Luxon Object
+        var time = luxon.DateTime.fromISO(characters[i].created);
+        // converts Luxon Object into string
+        time = time.toLocaleString(luxon.DateTime.DATETIME_SHORT);
 
         var div1El = $(`<div>`)
             .addClass(`character-box`);
@@ -39,8 +43,11 @@ var printCharList = function(htmlEl) {
         var div4El = $(`<p>`)
             .addClass(`character-class`)
             .text(characters[i].class);
+        var div5El = $(`<p>`)
+            .addClass(`character-created`)            
+            .text(time);
 
-        $(div1El).append(div2El, div3El, div4El);
+        $(div1El).append(div2El, div3El, div4El, div5El);
         $(`${htmlEl}`).append(div1El);
     }
 }
