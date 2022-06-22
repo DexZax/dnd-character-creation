@@ -256,27 +256,32 @@ var saveHandler = function() {
     // gets class and race from query 
     char.race = getQuerySelections('race');
     char.class = getQuerySelections('class');
+    char.created = luxon.DateTime.now();
     
     // get value from input 
-    char.name = $('#name').val()
+    char.name = $('#name-input').val()
 
     savedCharacters = JSON.parse(localStorage.getItem('characters'));
     
-
-    // save locally
+    // checks if key already exists
     if (!savedCharacters) {
         // sets saved characters as an array
         savedCharacters = [];
     }
-
+    
+    // append newly created character
     savedCharacters.push(char);
-
+    
+    // save locally
     localStorage.setItem('characters', JSON.stringify(savedCharacters));
 
+    // disables input
     $('#name-input').attr('disabled', true);
     $('#name-submit').attr('disabled', true);
 
+    // replaces title with character name
     $('h3').text(char.name);
+    // displays return to home button that was hidden initially
     $('#return').show();
 }
 
