@@ -14,6 +14,7 @@ var char = {
     name: ""
 }
 
+var savedCharacters;
 
 // FOR TESTING API LINKS
 var testLink = function(apiUrl) {
@@ -179,15 +180,28 @@ var displayInfo = function(data, specificSelection, selection) {
     }  
 }
 
-var savehandler= function(){
-    console.log(char.race) 
-    console.log(char.class)
+var saveHandler = function() {
+    // gets class and race from query 
+    char.race = getQuerySelections('race');
+    char.class = getQuerySelections('class');
+    
     // get value from input 
-    char.name= $('#name').val()
-    // 
-    // set name input into char.name 
-    // end goal - console log char.name
-    console.log(char.name) 
+    char.name = $('#name').val()
+
+    savedCharacters = JSON.parse(localStorage.getItem('characters'));
+    
+
+    // save locally
+    if (!savedCharacters) {
+        // sets saved characters as an array
+        savedCharacters = [];
+    }
+
+    savedCharacters.push(char);
+
+    localStorage.setItem('characters', JSON.stringify(savedCharacters));
+
+    $('#submit').attr('disabled', true);
 }
 
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
@@ -198,7 +212,7 @@ getList("classes", printClasses)
 // event listeners
 $(".race-boxes").click(selectingRaceHandler);
 $(".class-boxes").click(selectingClassHandler);
-$("#submit").click(savehandler)
+$("#submit").click(saveHandler)
 
 // testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
 getCharacterDetails("class");
