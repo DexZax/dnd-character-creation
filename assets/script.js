@@ -66,7 +66,7 @@ var printList = function(htmlEl, list, imgFolder, propername) {
 // Prints races
 var printRaces = function(list) {
     racesList = list.results;
-    printList(".race-boxes", racesList, "d&d races", "race");
+    printList(".race-boxes", racesList, "d&d-races", "race");
 }
 
 // Store race information
@@ -126,7 +126,7 @@ var getQuerySelections = function(argument) {
 // CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
 var printClasses = function(list) {
     classList = list.results;
-    printList(".class-boxes", classList, "d&d classes", "class");
+    printList(".class-boxes", classList, "d&d-classes", "class");
 }
 
 
