@@ -41,7 +41,9 @@ var getList = function(serverList, setLocalList) {
 // Print list to HTML
 // htmlEl: the html element we want to append the <li> to
 // list: the array we want to print
+
 var printList = function(htmlEl, list, imgFolder, propername) {
+    console.log(list);
     for (var i = 0; i < list.length; i++) {
 
         var cardDivEl = $(`<div>`)
@@ -112,8 +114,8 @@ var selectingRaceHandler = function(event) {
     // // ensures handler only runs when a race-box is selected
     if (event.target.matches(`.race-select`)) {
         // sets selected race to what was selected
-        char.race = $(target).parents(`.race-box`).find('h2').text().toLocaleLowerCase();
-        char.race = $(target).find('p').text().toLocaleLowerCase();
+        char.race = $(target).parents(`.race-box`).find('.title').text().toLocaleLowerCase();
+        // char.race = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`races/${char.race}`, storeRaceInfo);
         console.log("clicked " + char.race);
@@ -122,8 +124,8 @@ var selectingRaceHandler = function(event) {
         location.replace(`classes.html?race=${char.race}`)
         storeRaceSelection(char.race);
 
-    }  else if (event.target.matches(`.raceInfo`)) {
-        char.race = $(target).parents(`.race-box`).find('h2').text().toLocaleLowerCase();
+    }  else if (event.target.matches(`.info-select`)) {
+        char.race = $(target).parents(`.race-box`).find('.title').text().toLocaleLowerCase();
         var apiUrl = `https://www.dnd5eapi.co/api/races/${char.race}`
         fetch(apiUrl) 
         .then(response => response.json())
@@ -153,11 +155,6 @@ var getQuerySelections = function(argument) {
         }
     }}
 
-getList("races", printRaces);
-
-// event listeners
-$(".race-boxes").click(selectingRaceHandler);
-
 // testLink(`https://www.dnd5eapi.co/api/ability-scores`);
 
 var getClassList = function(serverList, setLocalList) {
@@ -181,8 +178,8 @@ var selectingClassHandler = function(event) {
     // // ensures handler only runs when a select btn is selected
     if (event.target.matches(`.class-select`)) {
         // sets selected class to what was selected
-        char.class = $(target).parents(`.class-box`).find('h2').text().toLocaleLowerCase();
-        char.class = $(target).find('p').text().toLocaleLowerCase();
+        char.class = $(target).parents(`.class-box`).find('.title').text().toLocaleLowerCase();
+        // char.class = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
@@ -193,8 +190,8 @@ var selectingClassHandler = function(event) {
         location.replace(`name.html?race=${race}&class=${char.class}`);
 
     }  
-    else if (target.matches(`.classInfo`)) {
-        char.class = $(target).parents(`.class-box`).find('h2').text().toLocaleLowerCase();
+    else if (target.matches(`.info-select`)) {
+        char.class = $(target).parents(`.class-box`).find('.title').text().toLocaleLowerCase();
         var apiUrl = `https://www.dnd5eapi.co/api/classes/${char.class}`
         fetch(apiUrl) 
         .then(response => response.json())
@@ -264,7 +261,7 @@ var displayInfo = function(data, specificSelection, selection) {
 
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
 getList("races", printRaces);
-getList("classes", printClasses)
+getList("classes", printClasses);
 
 
 // event listeners
