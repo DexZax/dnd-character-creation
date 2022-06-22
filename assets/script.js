@@ -11,7 +11,8 @@ var classInfo = []
 var char = {
     race: "",
     class: "",
-    name: ""
+    name: "",
+    created: ""
 }
 
 var characters = JSON.parse(localStorage.getItem('characters'));
@@ -81,7 +82,7 @@ var printList = function(htmlEl, list, imgFolder, propername) {
 
         var imgEl = $(`<img>`)
             .addClass(`${propername}-img`)
-            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
+            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name.toLocaleLowerCase()}.png`);
 
         $(cardDivEl).append(divEl);
         $(divEl).append(divEl2, divEl3, footerEl);
@@ -154,8 +155,6 @@ var getQuerySelections = function(argument) {
             return seperatedSelections[i].split("=")[1];
         }
     }}
-
-// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
 
 var getClassList = function(serverList, setLocalList) {
     fetch(`${apiURL}${serverList}`)
