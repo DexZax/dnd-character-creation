@@ -12,3 +12,37 @@ characterButton.addEventListener('click', () => {
 modalBg.addEventListener('click', () => {
     modal.classList.remove('is-active');
 });
+
+var characters = JSON.parse(localStorage.getItem('characters'));
+
+console.log(characters);
+
+var printCharList = function(htmlEl) {
+
+    if(!characters) {
+        $(".saved-title").text("No Saved Characters")
+        return;
+    }
+
+    $(".saved-title").text("Saved Characters")
+
+    for (var i = 0; i < characters.length; i++) {
+
+        var div1El = $(`<div>`)
+            .addClass(`character-box`);
+        var div2El = $(`<h3>`)
+            .addClass(`characer-name`)
+            .html(characters[i].name);
+        var div3El = $(`<p>`)
+            .addClass(`character-race`)
+            .text(characters[i].race);
+        var div4El = $(`<p>`)
+            .addClass(`character-class`)
+            .text(characters[i].class);
+
+        $(div1El).append(div2El, div3El, div4El);
+        $(`${htmlEl}`).append(div1El);
+    }
+}
+
+printCharList(".character-list");

@@ -14,6 +14,9 @@ var char = {
     name: ""
 }
 
+var characters = JSON.parse(localStorage.getItem('characters'));
+
+console.log(characters);
 
 // FOR TESTING API LINKS
 var testLink = function(apiUrl) {
@@ -40,8 +43,7 @@ var getList = function(serverList, setLocalList) {
 // list: the array we want to print
 var printList = function(htmlEl, list, imgFolder, propername) {
     for (var i = 0; i < list.length; i++) {
-        var divEl = $(`<div>`)
-            .addClass(`${propername}-box`);
+
         var cardDivEl = $(`<div>`)
             .addClass(`column is is-12-mobile is-6-tablet is-4-desktop`);
 
@@ -64,11 +66,11 @@ var printList = function(htmlEl, list, imgFolder, propername) {
             .addClass(`card-footer-item`);
 
         var selectEl = $(`<a>`)
-            .addClass(`race-select has-text-grey`)
+            .addClass(`${propername}-select has-text-grey`)
             .text(`select`);
 
         var infoEl = $(`<a>`)
-            .addClass(`has-text-grey`)
+            .addClass(`info-select has-text-grey`)
             .text(`info`);
 
         var titleEl = $(`<p>`)
@@ -76,16 +78,9 @@ var printList = function(htmlEl, list, imgFolder, propername) {
             .text(`${list[i].name}`);
 
         var imgEl = $(`<img>`)
-            .addClass(`class-img`)
+            .addClass(`${propername}-img`)
             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
-            
-        var button1El = $(`<button>`)
-            .addClass(`${propername}-select button is-medium`)
-            .text(`select`);
-        
-        var button2El = $(`<button>`)
-            .addClass(`${propername}Info button is-medium`)
-            .text(`info`);
+
         $(cardDivEl).append(divEl);
         $(divEl).append(divEl2, divEl3, footerEl);
         $(divEl2).append(titleEl);
@@ -140,6 +135,7 @@ var getQuerySelections = function(argument) {
             return seperatedSelections[i].split("=")[1];
         }
     }}
+
 getList("races", printRaces);
 
 // event listeners
@@ -154,82 +150,6 @@ var getClassList = function(serverList, setLocalList) {
             setLocalList(data);
         });
 }
-
-// var printClassList = function(htmlEl, list, imgFolder) {
-//     for (var i = 0; i < list.length; i++) {
-//         var divEl = $(`<div>`)
-//             .addClass(`class-box card`);
-
-//         var titleEl = $(`<h2>`)
-//             .text(`${list[i].name}`);
-
-//         var imgEl = $(`<img>`)
-//             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
-            
-//         var button1El = $(`<button>`)
-//             .addClass(`class-select button is-medium`)
-//             .text(`select`);
-        
-//         var button2El = $(`<button>`)
-//             .addClass(`classInfo button is-medium`)
-//             .text(`info`);
-//         $(button2El).click(selectingRaceHandler);
-
-//         $(divEl).append(titleEl, imgEl, button1El, button2El);
-//         $(`${htmlEl}`).append(divEl);
-//     }
-// }
-
-var printClassList = function(htmlEl, list, imgFolder) {
-    for (var i = 0; i < list.length; i++) {
-        var cardDivEl = $(`<div>`)
-            .addClass(`column column is is-12-mobile is-6-tablet is-4-desktop`);
-
-        var divEl = $(`<div>`)
-            .addClass(`class-box card`);
-        
-        var divEl2 = $(`<div>`)
-            .addClass(`card-content`);
-
-        var divEl3 = $(`<div>`)
-            .addClass(`card-image has-text-centered px-6`);
-
-        var footerEl = $(`<footer>`)
-            .addClass(`card-footer`);
-
-        var footerP = $(`<p>`)
-            .addClass(`card-footer-item`);
-
-        var footerP2 = $(`<p>`)
-            .addClass(`card-footer-item`);
-
-        var selectEl = $(`<a>`)
-            .addClass(`class-select has-text-grey`)
-            .text(`select`);
-
-        var infoEl = $(`<a>`)
-            .addClass(`has-text-grey`)
-            .text(`info`);
-
-        var titleEl = $(`<p>`)
-            .addClass(`title is-size-5 has-text-centered`)
-            .text(`${list[i].name}`);
-
-        var imgEl = $(`<img>`)
-            .addClass(`class-img`)
-            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
-            
-        $(cardDivEl).append(divEl);
-        $(divEl).append(divEl2, divEl3, footerEl);
-        $(divEl2).append(titleEl);
-        $(divEl3).append(imgEl);
-        $(footerEl).append(footerP, footerP2);
-        $(footerP).append(selectEl);
-        $(footerP2  ).append(infoEl);
-        $(`${htmlEl}`).append(cardDivEl);
-    }
-}
-
 
 // CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
 var printClasses = function(list) {
@@ -318,3 +238,4 @@ $(".class-boxes").click(selectingClassHandler);
 // testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
 getCharacterDetails("class");
 getCharacterDetails("race");
+
