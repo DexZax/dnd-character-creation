@@ -11,12 +11,13 @@ var classInfo = []
 var char = {
     race: "",
     class: "",
-    name: ""
+    name: "",
+    created: ""
 }
 
 var characters = JSON.parse(localStorage.getItem('characters'));
 
-console.log(characters);
+var savedCharacters;
 
 // FOR TESTING API LINKS
 var testLink = function(apiUrl) {
@@ -41,9 +42,7 @@ var getList = function(serverList, setLocalList) {
 // Print list to HTML
 // htmlEl: the html element we want to append the <li> to
 // list: the array we want to print
-
 var printList = function(htmlEl, list, imgFolder, propername) {
-    console.log(list);
     for (var i = 0; i < list.length; i++) {
 
         var cardDivEl = $(`<div>`)
@@ -81,7 +80,7 @@ var printList = function(htmlEl, list, imgFolder, propername) {
 
         var imgEl = $(`<img>`)
             .addClass(`${propername}-img`)
-            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
+            .attr(`src`, `./assets/images/${imgFolder}/${list[i].name.toLocaleLowerCase()}.png`);
 
         $(cardDivEl).append(divEl);
         $(divEl).append(divEl2, divEl3, footerEl);
@@ -99,7 +98,7 @@ var printList = function(htmlEl, list, imgFolder, propername) {
 // Prints races
 var printRaces = function(list) {
     racesList = list.results;
-    printList(".race-boxes", racesList, "d&d races", "race");
+    printList(".race-boxes", racesList, "d&d-races", "race");
 }
 
 // Store race information
@@ -118,7 +117,6 @@ var selectingRaceHandler = function(event) {
         // char.race = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`races/${char.race}`, storeRaceInfo);
-        console.log("clicked " + char.race);
 
         // navigate to class
         location.replace(`classes.html?race=${char.race}`)
@@ -145,17 +143,15 @@ var selectingRaceHandler = function(event) {
 
 var getQuerySelections = function(argument) {
     var currentUrl = window.location.href.toString()
-    // var testUrl = "dnd.com/name.html?race=dwarf&class=priest"
+
     var selections = currentUrl.split("?")[1];
-    // console.log(selections);
+
     var seperatedSelections = selections.split("&");
     for (var i = 0; i < seperatedSelections.length; i++) {
         if (argument === seperatedSelections[i].split("=")[0]) {
             return seperatedSelections[i].split("=")[1];
         }
     }}
-
-// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
 
 var getClassList = function(serverList, setLocalList) {
     fetch(`${apiURL}${serverList}`)
@@ -168,7 +164,7 @@ var getClassList = function(serverList, setLocalList) {
 // CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
 var printClasses = function(list) {
     classList = list.results;
-    printList(".class-boxes", classList, "d&d classes", "class");
+    printList(".class-boxes", classList, "d&d-classes", "class");
 }
 
 
@@ -182,7 +178,6 @@ var selectingClassHandler = function(event) {
         // char.class = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`class/${char.class}`, storeClassInfo);
-        console.log("clicked " + char.class);
 
         var race = getQuerySelections("race");
 
@@ -196,7 +191,6 @@ var selectingClassHandler = function(event) {
         fetch(apiUrl) 
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             $(`.modal`).addClass(`is-active`);
             $(`.infoContainer`).empty()
             var sub = $("<p>").text(`${char.class} Proficiencies:`)
@@ -258,6 +252,33 @@ var displayInfo = function(data, specificSelection, selection) {
     }  
 }
 
+var saveHandler = function() {
+    // gets class and race from query 
+    char.race = getQuerySelections('race');
+    char.class = getQuerySelections('class');
+    
+    // get value from input 
+    char.name = $('#name').val()
+
+    savedCharacters = JSON.parse(localStorage.getItem('characters'));
+    
+
+    // save locally
+    if (!savedCharacters) {
+        // sets saved characters as an array
+        savedCharacters = [];
+    }
+
+    savedCharacters.push(char);
+
+    localStorage.setItem('characters', JSON.stringify(savedCharacters));
+
+    $('#name-input').attr('disabled', true);
+    $('#name-submit').attr('disabled', true);
+
+    $('h3').text(char.name);
+    $('#return').show();
+}
 
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
 getList("races", printRaces);
@@ -267,6 +288,8 @@ getList("classes", printClasses);
 // event listeners
 $(".race-boxes").click(selectingRaceHandler);
 $(".class-boxes").click(selectingClassHandler);
+$("#name-submit").click(saveHandler);
+$("#return").click(() => {location.replace('index.html')});
 
 // testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
 getCharacterDetails("class");
