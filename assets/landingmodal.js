@@ -15,7 +15,7 @@ modalBg.addEventListener('click', () => {
 
 var characters = JSON.parse(localStorage.getItem('characters'));
 
-console.log(characters);
+// console.log(characters);
 
 var printCharList = function(htmlEl) {
 
@@ -35,7 +35,7 @@ var printCharList = function(htmlEl) {
         var div1El = $(`<div>`)
             .addClass(`character-box`);
         var div2El = $(`<h3>`)
-            .addClass(`characer-name`)
+            .addClass(`character-name`)
             .html(characters[i].name);
         var div3El = $(`<p>`)
             .addClass(`character-race`)
