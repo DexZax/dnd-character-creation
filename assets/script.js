@@ -14,6 +14,9 @@ var char = {
     name: ""
 }
 
+var characters = JSON.parse(localStorage.getItem('characters'));
+
+console.log(characters);
 
 // FOR TESTING API LINKS
 var testLink = function(apiUrl) {
@@ -40,25 +43,53 @@ var getList = function(serverList, setLocalList) {
 // list: the array we want to print
 var printList = function(htmlEl, list, imgFolder, propername) {
     for (var i = 0; i < list.length; i++) {
-        var divEl = $(`<div>`)
-            .addClass(`${propername}-box`);
 
-        var titleEl = $(`<h2>`)
+        var cardDivEl = $(`<div>`)
+            .addClass(`column is is-12-mobile is-6-tablet is-4-desktop`);
+
+        var divEl = $(`<div>`)
+            .addClass(`${propername}-box card`);
+        
+        var divEl2 = $(`<div>`)
+            .addClass(`card-content`);
+
+        var divEl3 = $(`<div>`)
+            .addClass(`card-image has-text-centered px-6`);
+
+        var footerEl = $(`<footer>`)
+            .addClass(`card-footer`);
+
+        var footerP = $(`<p>`)
+            .addClass(`card-footer-item`);
+
+        var footerP2 = $(`<p>`)
+            .addClass(`card-footer-item`);
+
+        var selectEl = $(`<a>`)
+            .addClass(`${propername}-select has-text-grey`)
+            .text(`select`);
+
+        var infoEl = $(`<a>`)
+            .addClass(`info-select has-text-grey`)
+            .text(`info`);
+
+        var titleEl = $(`<p>`)
+            .addClass(`title is-size-5 has-text-centered`)
             .text(`${list[i].name}`);
 
         var imgEl = $(`<img>`)
+            .addClass(`${propername}-img`)
             .attr(`src`, `./assets/images/${imgFolder}/${list[i].name}.png`);
-            
-        var button1El = $(`<button>`)
-            .addClass(`${propername}-select button is-medium`)
-            .text(`select`);
-        
-        var button2El = $(`<button>`)
-            .addClass(`${propername}Info button is-medium`)
-            .text(`info`);
 
-        $(divEl).append(titleEl, imgEl, button1El, button2El);
-        $(`${htmlEl}`).append(divEl);
+        $(cardDivEl).append(divEl);
+        $(divEl).append(divEl2, divEl3, footerEl);
+        $(divEl2).append(titleEl);
+        $(divEl3).append(imgEl);
+        $(footerEl).append(footerP, footerP2);
+        $(footerP).append(selectEl);
+        $(footerP2  ).append(infoEl);
+
+        $(`${htmlEl}`).append(cardDivEl);
     }
 }
 
@@ -82,6 +113,7 @@ var selectingRaceHandler = function(event) {
     if (event.target.matches(`.race-select`)) {
         // sets selected race to what was selected
         char.race = $(target).parents(`.race-box`).find('h2').text().toLocaleLowerCase();
+        char.race = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`races/${char.race}`, storeRaceInfo);
         console.log("clicked " + char.race);
@@ -119,9 +151,22 @@ var getQuerySelections = function(argument) {
         if (argument === seperatedSelections[i].split("=")[0]) {
             return seperatedSelections[i].split("=")[1];
         }
-    }
-}
+    }}
 
+getList("races", printRaces);
+
+// event listeners
+$(".race-boxes").click(selectingRaceHandler);
+
+// testLink(`https://www.dnd5eapi.co/api/ability-scores`);
+
+var getClassList = function(serverList, setLocalList) {
+    fetch(`${apiURL}${serverList}`)
+        .then(response => response.json())
+        .then(data => {
+            setLocalList(data);
+        });
+}
 
 // CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
 var printClasses = function(list) {
@@ -137,6 +182,7 @@ var selectingClassHandler = function(event) {
     if (event.target.matches(`.class-select`)) {
         // sets selected class to what was selected
         char.class = $(target).parents(`.class-box`).find('h2').text().toLocaleLowerCase();
+        char.class = $(target).find('p').text().toLocaleLowerCase();
 
         getList(`class/${char.class}`, storeClassInfo);
         console.log("clicked " + char.class);
@@ -228,3 +274,4 @@ $(".class-boxes").click(selectingClassHandler);
 // testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
 getCharacterDetails("class");
 getCharacterDetails("race");
+
