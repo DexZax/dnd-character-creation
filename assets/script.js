@@ -16,7 +16,7 @@ var char = {
 
 var characters = JSON.parse(localStorage.getItem('characters'));
 
-console.log(characters);
+var savedCharacters;
 
 // FOR TESTING API LINKS
 var testLink = function(apiUrl) {
@@ -99,7 +99,7 @@ var printList = function(htmlEl, list, imgFolder, propername) {
 // Prints races
 var printRaces = function(list) {
     racesList = list.results;
-    printList(".race-boxes", racesList, "d&d races", "race");
+    printList(".race-boxes", racesList, "d&d-races", "race");
 }
 
 // Store race information
@@ -168,7 +168,7 @@ var getClassList = function(serverList, setLocalList) {
 // CLASS SPECIFIC FUNCTIONS ///////////////////////////////////////////////////
 var printClasses = function(list) {
     classList = list.results;
-    printList(".class-boxes", classList, "d&d classes", "class");
+    printList(".class-boxes", classList, "d&d-classes", "class");
 }
 
 
@@ -258,6 +258,29 @@ var displayInfo = function(data, specificSelection, selection) {
     }  
 }
 
+var saveHandler = function() {
+    // gets class and race from query 
+    char.race = getQuerySelections('race');
+    char.class = getQuerySelections('class');
+    
+    // get value from input 
+    char.name = $('#name').val()
+
+    savedCharacters = JSON.parse(localStorage.getItem('characters'));
+    
+
+    // save locally
+    if (!savedCharacters) {
+        // sets saved characters as an array
+        savedCharacters = [];
+    }
+
+    savedCharacters.push(char);
+
+    localStorage.setItem('characters', JSON.stringify(savedCharacters));
+
+    $('#submit').attr('disabled', true);
+}
 
 // RUNNING SCRIPT /////////////////////////////////////////////////////////////
 getList("races", printRaces);
@@ -267,6 +290,7 @@ getList("classes", printClasses);
 // event listeners
 $(".race-boxes").click(selectingRaceHandler);
 $(".class-boxes").click(selectingClassHandler);
+$("#submit").click(saveHandler)
 
 // testLink(`https://www.dnd5eapi.co/api/classes/wizard`);
 getCharacterDetails("class");
