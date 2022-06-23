@@ -1,5 +1,14 @@
-# D&D Character Creation
-Character creation site to help manage your different DnD characters.
+# D&D Character Creation Tool
+
+## Purpose
+Dungeons and Dragons character tool to help create and manage your unique DnD characters.
+## Built With
+* HTML
+* CSS
+* JavaScript
+* Bulma css framework
+* D&D 5e API
+* luxon
 
 ## Website
 https://dexzax.github.io/dnd-character-creation/

@@ -29,8 +29,6 @@
     }
 }
 
-/* landing page style */
-
 /* general */
 
 html {
@@ -121,7 +119,8 @@ h3 {
     }
 }
 
-/* races page style */ 
+/* info card style */ 
+
 .race-boxes, .class-boxes {
     display: flex;
     justify-content: space-around;
